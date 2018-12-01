@@ -4,8 +4,21 @@ object Main {
   def main(args: Array[String]) {
     println("Pascal's Triangle")
     for (row <- 0 to 10) {
-      for (col <- 0 to row)
-        print(pascal(col, row) + " ")
+      var limit = 20
+
+      if (row == 10) limit = 17 else
+      if (row >= 9) limit = 18 else
+      if (row >= 5) limit = 19
+
+      for(space <- row to limit) {
+        print(" ")
+      }
+
+      for (col <- 0 to row) {
+        val p = pascal(col, row)
+        var s = " "
+        print(p + s)
+      }
       println()
     }
 
@@ -45,5 +58,4 @@ object Main {
           countChange(money - coins.head, coins) +
           countChange(money, coins.tail)
     }
-
   }
